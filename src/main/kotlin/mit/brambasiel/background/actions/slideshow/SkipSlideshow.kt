@@ -4,8 +4,8 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import mit.brambasiel.background.SlideshowProcess
 
-class PlaySlideshow : AnAction(){
+class SkipSlideshow : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
-        SlideshowProcess.start()
+        SlideshowProcess.current?.change()
     }
 }

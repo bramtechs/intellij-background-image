@@ -6,14 +6,13 @@ import mit.brambasiel.background.utils.Notifier
 import java.io.File
 import kotlin.random.Random
 
-class Slideshow(val folder: VirtualFile, val interval: Long) {
+class Slideshow(val folder: File, val interval: Long) {
     val pool : ArrayDeque<File> = ArrayDeque()
 
     init {
 
         // index the folder of images
-        val dir = File(folder.canonicalPath!!)
-        for (file in dir.listFiles()!!){
+        for (file in folder.listFiles()!!){
            if (ImageValidator.isValid(file!!).first) {
                pool.add(file)
            }
@@ -29,10 +28,6 @@ class Slideshow(val folder: VirtualFile, val interval: Long) {
     }
 
     companion object {
-        private var current : Slideshow? = null
-
-        fun getCurrentOrNull(): Slideshow? {
-           return current
-        }
+        var current : Slideshow? = null
     }
 }

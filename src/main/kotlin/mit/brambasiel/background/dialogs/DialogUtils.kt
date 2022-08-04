@@ -12,4 +12,9 @@ object DialogUtils {
         val picker = FileChooserFactory.getInstance().createFileChooser(descr, null, null)
         return picker.choose(null).first()
     }
+    fun pickFolder(): VirtualFile {
+        val descr = FileChooserDescriptorFactory.createSingleFolderDescriptor()
+        val picker = FileChooserFactory.getInstance().createFileChooser(descr, null, null)
+        return picker.choose(null).first()
+    }
 }

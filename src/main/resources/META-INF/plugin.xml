@@ -42,12 +42,6 @@
                     description="Change the background to a chosen image. Stops the slideshow if it's running.">
                 <keyboard-shortcut first-keystroke="ctrl alt b" keymap="$default"/>
             </action>
-            <action id="mit.brambasiel.background.actions.OsBackground"
-                    class="mit.brambasiel.background.actions.OsBackground"
-                    text="Show Desktop Background (EXPERIMENTAL)"
-                    description="Change the background to your desktop's. Stops the slideshow if it's running.">
-                <keyboard-shortcut first-keystroke="ctrl alt w" keymap="$default"/>
-            </action>
             <group
                     id="mit.brambasiel.background.actions.GroupedSlideshowActions"
                     text="Slideshow"
@@ -59,11 +53,21 @@
                         class="mit.brambasiel.background.actions.slideshow.PlaySlideshow"
                         text="Play"
                         description="Start cycling through background images"/>
-                <action id="mit.brambasiel.background.actions.slideshow.PauseSlideshow"
-                        class="mit.brambasiel.background.actions.slideshow.PauseSlideshow"
+                <action id="mit.brambasiel.background.actions.slideshow.SkipSlideshow"
+                        class="mit.brambasiel.background.actions.slideshow.SkipSlideshow"
+                        text="Skip"
+                        description="Start cycling through background images"/>
+                <action id="mit.brambasiel.background.actions.slideshow.StopSlideshow"
+                        class="mit.brambasiel.background.actions.slideshow.StopSlideshow"
                         text="Stop"
                         description="Stop cycling through background images"/>
             </group>
+            <action id="mit.brambasiel.background.actions.OsBackground"
+                    class="mit.brambasiel.background.actions.OsBackground"
+                    text="Show Desktop Wallpaper (EXPERIMENTAL)"
+                    description="Change the background to your desktop's. Stops the slideshow if it's running.">
+                <keyboard-shortcut first-keystroke="ctrl alt w" keymap="$default"/>
+            </action>
         </group>
     </actions>
 </idea-plugin>

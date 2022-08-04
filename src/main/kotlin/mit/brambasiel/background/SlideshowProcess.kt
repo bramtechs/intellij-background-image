@@ -2,7 +2,7 @@ package mit.brambasiel.background
 
 import mit.brambasiel.background.utils.Notifier
 
-class BackgroundTask(val show: Slideshow) : Thread() {
+class SlideshowProcess(val show: Slideshow) : Thread() {
 
     private var shouldStop: Boolean = false
     private var nextChange: Long = System.currentTimeMillis()
@@ -11,7 +11,7 @@ class BackgroundTask(val show: Slideshow) : Thread() {
         change()
     }
 
-    private fun change() {
+    fun change() {
         nextChange += show.interval
         val f = show.getRandomImage()
         Background.setImage(f)
@@ -27,16 +27,22 @@ class BackgroundTask(val show: Slideshow) : Thread() {
     }
 
     companion object {
-        private var current: BackgroundTask? = null
+        var current: SlideshowProcess? = null
 
         fun start() {
             stop()
-            val show = Slideshow.getCurrentOrNull()
-            if (show == null) {
+            if (Slideshow.current == null) {
                 Notifier.notify("No slideshow configured")
                 return
+            }else{
+                current = SlideshowProcess(Slideshow.current!!)
+                Notifier.notify("Background process started")
+                current!!.start()
             }
-            current = BackgroundTask(show)
+        }
+        fun startShow(show: Slideshow){
+            Slideshow.current = show
+            start()
         }
 
         fun stop() {

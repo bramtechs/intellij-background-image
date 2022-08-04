@@ -3,7 +3,11 @@ package mit.brambasiel.background
 import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil
+import mit.brambasiel.background.utils.ImageValidator
+import mit.brambasiel.background.utils.Notifier
+import mit.brambasiel.background.utils.OSUtils
 import java.io.File
+import java.nio.file.Path
 
 object Background {
     /**
@@ -20,4 +24,6 @@ object Background {
         props.setValue(IdeBackgroundUtil.EDITOR_PROP,file.canonicalPath)
         props.setValue(IdeBackgroundUtil.FRAME_PROP,file.canonicalPath)
     }
+
+
 }
