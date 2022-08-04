@@ -64,7 +64,7 @@
             </group>
             <action id="mit.brambasiel.background.actions.OsBackground"
                     class="mit.brambasiel.background.actions.OsBackground"
-                    text="Show Desktop Wallpaper (EXPERIMENTAL)"
+                    text="Set to Desktop Wallpaper"
                     description="Change the background to your desktop's. Stops the slideshow if it's running.">
                 <keyboard-shortcut first-keystroke="ctrl alt w" keymap="$default"/>
             </action>

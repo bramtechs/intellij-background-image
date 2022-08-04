@@ -39,7 +39,11 @@ object OSUtils {
         return when (getOperatingSystem()){
             OS.WINDOWS -> {
                 // https://answers.microsoft.com/en-us/windows/forum/all/where-is-the-current-custom-wallpaper-stored-in/f08a364c-43d3-4303-9252-81d88b2b86a7
-                searchPath("${System.getProperty("user.home")}\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\CachedFiles")
+                var file = searchPath("${System.getProperty("user.home")}\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\CachedFiles")
+                if (file == null){ // get transcoded wallpaper
+                    file = File("${System.getProperty("user.home")}\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\TranscodedWallpaper")
+                }
+                file!!
             }
             else -> {
                 Notifier.notify("Only Windows is supported for the moment.")
