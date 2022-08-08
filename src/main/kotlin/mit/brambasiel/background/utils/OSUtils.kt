@@ -29,8 +29,6 @@ object OSUtils {
             for (file in cacheFolder.listFiles()!!){
                 return file
             }
-        }else{
-            Notifier.notify("Folder $path not found")
         }
         return null
     }
@@ -43,7 +41,7 @@ object OSUtils {
                 if (file == null){ // get transcoded wallpaper
                     file = File("${System.getProperty("user.home")}\\AppData\\Roaming\\Microsoft\\Windows\\Themes\\TranscodedWallpaper")
                 }
-                file!!
+                file
             }
             else -> {
                 Notifier.notify("Only Windows is supported for the moment.")

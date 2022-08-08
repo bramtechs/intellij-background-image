@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "mit.brambasiel.background"
-version = "1.0-SNAPSHOT"
+version = "1.1-Stable"
 
 repositories {
     mavenCentral()
@@ -42,6 +42,6 @@ tasks {
     }
 
     publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
+        token.set(System.getenv("ORG_GRADLE_PROJECT_intellijPublishToken"))
     }
 }

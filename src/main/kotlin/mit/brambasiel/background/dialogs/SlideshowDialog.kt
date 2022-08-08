@@ -43,12 +43,14 @@ class SlideshowDialog : DialogWrapper(true) {
         format.commitsOnValidEdit = false
 
         interval = JFormattedTextField(format)
+        interval.text = "30"
         panel.add(interval)
 
         // unit box
         unitBox = ComboBox<String>()
         val units = arrayOf("Seconds", "Minutes", "Hours")
         units.forEach { unitBox.addItem(it) }
+        unitBox.selectedIndex = 1
         panel.add(unitBox)
 
         return panel
@@ -58,6 +60,10 @@ class SlideshowDialog : DialogWrapper(true) {
         get() {
             // create a new slideshow object
             if (file != null) {
+                if (interval.text.isEmpty()){
+                    Notifier.notify("No time amount was chosen")
+                    return null
+                }
                 val interval = interval.text.toLong() * when (unitBox.selectedItem) {
                     "Seconds" -> 1 * 1000
                     "Minutes" -> 60 * 1000
@@ -76,6 +82,7 @@ class SlideshowDialog : DialogWrapper(true) {
             if (dialog.showAndGet()) {
                 if (dialog.result != null) {
                     Slideshow.current = dialog.result!!
+                    SlideshowProcess.start()
                 }
             }
         }
